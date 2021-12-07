@@ -1,34 +1,74 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 
-import { Header } from '../index';
+import { UserCard } from '../index';
 
-describe('Header Component', () => {
+describe('UserCard Component', () => {
   it('should be able to render the elements three correctly', () => {
-    const container = render(<Header />);
+    const userData = {
+      login: 'mojombo',
+      id: 1,
+      avatar_url: 'https://avatars.githubusercontent.com/u/1?v=4',
+      html_url: 'https://github.com/mojombo',
+    };
+
+    const container = render(
+      <BrowserRouter>
+        <UserCard userData={userData} />
+      </BrowserRouter>,
+    );
 
     expect(container).toMatchInlineSnapshot(`
       Object {
         "asFragment": [Function],
         "baseElement": <body>
           <div>
-            <header
-              class="sc-bdvvtL qYxbU"
+            <div
+              class="sc-bdvvtL bwjIvI"
             >
+              <div
+                class="sc-gsDKAQ ejTjsX"
+              />
               <h1>
-                GitHub Users 🐈
+                <a
+                  href="https://github.com/mojombo"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  @mojombo
+                </a>
               </h1>
-            </header>
+              <a
+                href="/profile/mojombo"
+              >
+                See profile
+              </a>
+            </div>
           </div>
         </body>,
         "container": <div>
-          <header
-            class="sc-bdvvtL qYxbU"
+          <div
+            class="sc-bdvvtL bwjIvI"
           >
+            <div
+              class="sc-gsDKAQ ejTjsX"
+            />
             <h1>
-              GitHub Users 🐈
+              <a
+                href="https://github.com/mojombo"
+                rel="noreferrer"
+                target="_blank"
+              >
+                @mojombo
+              </a>
             </h1>
-          </header>
+            <a
+              href="/profile/mojombo"
+            >
+              See profile
+            </a>
+          </div>
         </div>,
         "debug": [Function],
         "findAllByAltText": [Function],

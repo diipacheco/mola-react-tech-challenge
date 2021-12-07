@@ -3,11 +3,16 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { Routes } from './routes';
 
+import { UsersContextProvider } from './hooks/users';
 import GlobalStyles from './styles/GlobalStyles';
+import { Header } from './components/Header';
 
 const App: React.FC = () => (
   <BrowserRouter>
-    <Routes />
+    <UsersContextProvider>
+      <Header />
+      <Routes />
+    </UsersContextProvider>
     <GlobalStyles />
   </BrowserRouter>
 );

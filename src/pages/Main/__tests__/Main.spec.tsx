@@ -1,34 +1,99 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import { Header } from '../index';
+import { Main } from '../index';
 
-describe('Header Component', () => {
+jest.mock('../../../hooks/users', () => ({
+  useUsers: () => ({
+    usersList: [],
+    userDetailed: {},
+    fetchUsersList: jest.fn(),
+    fetchUserDetailed: jest.fn(),
+  }),
+}));
+
+jest.mock('../../../hooks/usePagination', () => ({
+  usePagination: () => ({
+    totalPages: 1,
+    nextPage: jest.fn(),
+    prevPage: jest.fn(),
+    setPage: jest.fn(),
+    firstContentIndex: 1,
+    lastContentIndex: 1,
+    page: 1,
+  }),
+}));
+
+describe('Main Page', () => {
   it('should be able to render the elements three correctly', () => {
-    const container = render(<Header />);
+    const container = render(<Main />);
 
     expect(container).toMatchInlineSnapshot(`
       Object {
         "asFragment": [Function],
         "baseElement": <body>
           <div>
-            <header
-              class="sc-bdvvtL qYxbU"
+            <main
+              class="sc-dkPtRN cTJExT"
             >
-              <h1>
-                GitHub Users 🐈
-              </h1>
-            </header>
+              <div
+                class="sc-hKwDye fGwpwT"
+              />
+              <div
+                class="sc-eCImPb jXOua-D"
+              >
+                <button
+                  class="sc-jRQBWg jGAIzl"
+                  disabled=""
+                >
+                  ←
+                </button>
+                <button
+                  class="sc-jRQBWg jGAIzl page active"
+                  disabled=""
+                >
+                  1
+                </button>
+                <button
+                  class="sc-jRQBWg jGAIzl"
+                  disabled=""
+                >
+                  →
+                </button>
+              </div>
+            </main>
           </div>
         </body>,
         "container": <div>
-          <header
-            class="sc-bdvvtL qYxbU"
+          <main
+            class="sc-dkPtRN cTJExT"
           >
-            <h1>
-              GitHub Users 🐈
-            </h1>
-          </header>
+            <div
+              class="sc-hKwDye fGwpwT"
+            />
+            <div
+              class="sc-eCImPb jXOua-D"
+            >
+              <button
+                class="sc-jRQBWg jGAIzl"
+                disabled=""
+              >
+                ←
+              </button>
+              <button
+                class="sc-jRQBWg jGAIzl page active"
+                disabled=""
+              >
+                1
+              </button>
+              <button
+                class="sc-jRQBWg jGAIzl"
+                disabled=""
+              >
+                →
+              </button>
+            </div>
+          </main>
         </div>,
         "debug": [Function],
         "findAllByAltText": [Function],

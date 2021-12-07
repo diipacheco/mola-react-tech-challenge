@@ -7,7 +7,6 @@ import { Profile } from '../pages/Profile';
 
 export const Routes: React.FC = () => (
   <Switch>
-    <Header />
     <Route path="/" exact component={Main} />
     <Route path="/profile/:login" component={Profile} />
   </Switch>
